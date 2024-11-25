@@ -11,10 +11,12 @@ router.post('/adminlogin', (req, res) => {
             if (result.length > 0) {
                 const email = result[0].email;
                 const token = jwt.sign({ role: "admin", email: email }, "jwt_secret_key", { expiresIn: '1d' });
-                res.cookie('token',token)
+                res.cookie('token', token, { httpOnly: true, secure: false }); // Adjust as needed
+                console.log("Cookie set:", token);
+
                 return res.json({ loginStatus: true });
         } else{
-            return res.json({ loginStatus: false, Error: "wrong email or password" });
+            return res.json({ loginStatus: false, Error: "Email Password thoda Dekh ke dala Kro Smjha kya ke Smjhau ?" });
         }
     });
 });
