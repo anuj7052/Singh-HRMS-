@@ -4,17 +4,32 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import axios from "axios";
 
 const Dashboard = () => {
-  const anvigate = useNavigate()
-  axios.defaults.withCredentials = true
+  const navigate = useNavigate();  // Fixed typo
+  axios.defaults.withCredentials = true;
+
   const handleLogout = () => {
     axios.get('http://localhost:3000/auth/logout')
-    .then(result => {
-      if(result.data.Status) { 
-        localStorage.removeItem("valid")
-        anvigate('/')
-      }
-    })
-  }
+      .then((result) => {
+        if (result.data.Status) { 
+          localStorage.removeItem("valid");
+          navigate('/');
+        } else {
+          alert('Logout failed: ' + result.data.Error);
+        }
+      })
+      .catch((error) => {
+        console.error('Error logging out:', error);
+        alert('An error occurred during logout.');
+      });
+  };
+
+  const menuItems = [
+    { path: '/dashboard', label: 'Dashboard', icon: 'bi-speedometer2' },
+    { path: '/dashboard/employee', label: 'Manage Employees', icon: 'bi-people' },
+    { path: '/dashboard/category', label: 'Category', icon: 'bi-columns' },
+    { path: '/dashboard/profile', label: 'Profile', icon: 'bi-person' },
+  ];
+
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
@@ -32,48 +47,20 @@ const Dashboard = () => {
               className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
               id="menu"
             >
-              <li className="w-100">
-                <Link
-                  to="/dashboard"
-                  className="nav-link text-white px-0 align-middle"
-                >
-                  <i className="fs-4 bi-speedometer2 ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Dashboard</span>
-                </Link>
-              </li>
-              <li className="w-100">
-                <Link
-                  to="/dashboard/employee"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <i className="fs-4 bi-people ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">
-                    Manage Employees
-                  </span>
-                </Link>
-              </li>
-              <li className="w-100">
-                <Link
-                  to="/dashboard/category"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <i className="fs-4 bi-columns ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Category</span>
-                </Link>
-              </li>
-              <li className="w-100">
-                <Link
-                  to="/dashboard/profile"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <i className="fs-4 bi-person ms-2"></i>
-                  <span className="ms-2 d-none d-sm-inline">Profile</span>
-                </Link>
-              </li>
+              {menuItems.map(item => (
+                <li className="w-100" key={item.path}>
+                  <Link
+                    to={item.path}
+                    className="nav-link text-white px-0 align-middle"
+                    aria-label={item.label}
+                  >
+                    <i className={`fs-4 bi ${item.icon} ms-2`}></i>
+                    <span className="ms-2 d-none d-sm-inline">{item.label}</span>
+                  </Link>
+                </li>
+              ))}
               <li className="w-100" onClick={handleLogout}>
-              <Link
-                  className="nav-link px-0 align-middle text-white"
-                >
+                <Link className="nav-link px-0 align-middle text-white">
                   <i className="fs-4 bi-power ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">Logout</span>
                 </Link>
@@ -82,10 +69,10 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="col p-0 m-0">
-            <div className="p-2 d-flex justify-content-center shadow">
-                <h4>Emoployee Management System</h4>
-            </div>
-            <Outlet />
+          <div className="p-2 d-flex justify-content-center shadow">
+            <h4>Employee Management System</h4>
+          </div>
+          <Outlet />
         </div>
       </div>
     </div>
