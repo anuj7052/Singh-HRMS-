@@ -8,10 +8,14 @@ const Home = () => {
   const [admins, setAdmins] = useState([]);
 
   useEffect(() => {
-    fetchData('http://localhost:3000/auth/admin_count', (data) => setAdminTotal(data[0].admin), 'Failed to fetch admin count');
-    fetchData('http://localhost:3000/auth/employee_count', (data) => setemployeeTotal(data[0].employee), 'Failed to fetch employee count');
-    fetchData('http://localhost:3000/auth/salary_count', (data) => setSalaryTotal(data[0].salaryOFEmp), 'Failed to fetch salary count');
-    fetchData('http://localhost:3000/auth/admin_records', setAdmins, 'Failed to fetch admin records');
+    // fetchData('http://localhost:3000/auth/admin_count', (data) => setAdminTotal(data[0].admin), 'Failed to fetch admin count');
+    fetchData('https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se', (data) => setAdminTotal(data[0].admin), 'Failed to fetch admin count');
+    // fetchData('http://localhost:3000/auth/employee_count', (data) => setemployeeTotal(data[0].employee), 'Failed to fetch employee count');
+    fetchData('https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se', (data) => setemployeeTotal(data[0].employee), 'Failed to fetch employee count');
+    // fetchData('http://localhost:3000/auth/salary_count', (data) => setSalaryTotal(data[0].salaryOFEmp), 'Failed to fetch salary count');
+    fetchData('https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se', (data) => setSalaryTotal(data[0].salaryOFEmp), 'Failed to fetch salary count');
+    // fetchData('http://localhost:3000/auth/admin_records', setAdmins, 'Failed to fetch admin records');
+    fetchData('https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se', setAdmins, 'Failed to fetch admin records');
   }, []);
 
   const fetchData = async (url, setState, errorMessage) => {

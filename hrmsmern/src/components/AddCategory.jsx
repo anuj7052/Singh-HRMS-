@@ -8,7 +8,8 @@ const AddCategory = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3000/auth/add_category', {category})
+        // axios.post('http://localhost:3000/auth/add_category', {category})
+        axios.post('https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se', {category})
         .then(result => {
             if(result.data.Status) {
                 navigate('/dashboard/category')

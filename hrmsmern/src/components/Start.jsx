@@ -7,7 +7,8 @@ const Start = () => {
     const navigate = useNavigate()
   axios.defaults.withCredentials = true;
   useEffect(() => {
-    axios.get('http://localhost:3000/verify')
+    // axios.get('http://localhost:3000/verify')
+    axios.get('https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se')
     .then(result => {
       if(result.data.Status) {
         if(result.data.role === "admin") {

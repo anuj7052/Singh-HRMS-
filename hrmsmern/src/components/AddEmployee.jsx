@@ -18,7 +18,9 @@ const AddEmployee = () => {
   // Fetch categories from backend
   useEffect(() => {
     axios
-      .get("http://localhost:3000/auth/category")
+      // .get("http://localhost:3000/auth/category")
+      .get("https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se")
+      
       .then((result) => {
         if (result.data.Status) {
           setCategory(result.data.Result);
@@ -43,7 +45,8 @@ const AddEmployee = () => {
     formData.append('category_id', employee.category_id);
 
     // Send POST request to backend
-    axios.post('http://localhost:3000/auth/add_employee', formData)
+    // axios.post('http://localhost:3000/auth/add_employee', formData)
+    axios.post('https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se', formData)
       .then(result => {
         if (result.data.Status) {
           navigate('/dashboard/employee');

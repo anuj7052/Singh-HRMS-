@@ -8,7 +8,8 @@ const Dashboard = () => {
   axios.defaults.withCredentials = true;
 
   const handleLogout = () => {
-    axios.get('http://localhost:3000/auth/logout')
+    // axios.get('http://localhost:3000/auth/logout')
+    axios.get('https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se')
       .then((result) => {
         if (result.data.Status) { 
           localStorage.removeItem("valid");

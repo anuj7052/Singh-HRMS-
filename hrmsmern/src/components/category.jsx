@@ -7,7 +7,8 @@ const Category = () => {
     const [category, setCategory] = useState([])
 
     useEffect(()=> {
-        axios.get('http://localhost:3000/auth/category')
+        // axios.get('http://localhost:3000/auth/category')
+        axios.get('https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se')
         .then(result => {
             if(result.data.Status) {
                 setCategory(result.data.Result);

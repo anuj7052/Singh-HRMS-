@@ -15,7 +15,8 @@ const EditEmployee = () => {
       const navigate = useNavigate()
 
       useEffect(()=> {
-        axios.get('http://localhost:3000/auth/category')
+        // axios.get('http://localhost:3000/auth/category')
+        axios.get('https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se')
         .then(result => {
             if(result.data.Status) {
                 setCategory(result.data.Result);
@@ -24,7 +25,8 @@ const EditEmployee = () => {
             }
         }).catch(err => console.log(err))
 
-        axios.get('http://localhost:3000/auth/employee/'+id)
+        // axios.get('http://localhost:3000/auth/employee/'+id)
+        axios.get('https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se'+id)
         .then(result => {
             setEmployee({
                 ...employee,
@@ -39,7 +41,8 @@ const EditEmployee = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.put('http://localhost:3000/auth/edit_employee/'+id, employee)
+        // axios.put('http://localhost:3000/auth/edit_employee/'+id, employee)
+        axios.put('https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se'+id, employee)
         .then(result => {
             if(result.data.Status) {
                 navigate('/dashboard/employee')

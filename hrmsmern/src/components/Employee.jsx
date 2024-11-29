@@ -8,7 +8,8 @@ const Employee = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/auth/employee")
+      // .get("http://localhost:3000/auth/employee")
+      .get("https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se")
       .then((result) => {
         if (result.data.Status) {
           setEmployee(result.data.Result);
@@ -19,7 +20,8 @@ const Employee = () => {
       .catch((err) => console.log(err));
   }, []);
   const handleDelete = (id) => {
-    axios.delete('http://localhost:3000/auth/delete_employee/'+id)
+    // axios.delete('http://localhost:3000/auth/delete_employee/'+id)
+    axios.delete('https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se'+id)
     .then(result => {
         if(result.data.Status) {
             window.location.reload()
@@ -54,7 +56,8 @@ const Employee = () => {
                 <td>{e.name}</td>
                 <td>
                   <img
-                    src={`http://localhost:3000/Images/` + e.image}
+                    // src={`http://localhost:3000/Images/` + e.image}
+                    src={`https://singh-hrms-pb96-1rq4nnt30-anuj-singhs-projects-59a76acf.vercel.app/?vercelToolbarCode=G4dEUZ0lHHls_se` + e.image}
                     className="employee_image"
                   />
                 </td>
